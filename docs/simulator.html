@@ -58,12 +58,12 @@
 <div class="layout">
   <header class="top">
     <div class="brand"><div class="brand-mark">↗</div><span>KAROO / MINIMAL</span></div>
-    <div class="top-right"><span class="dot"></span><span>INTERACTIVE LAB</span><span class="chip">CONCEPT / v0.2</span></div>
+    <div class="top-right"><span class="dot"></span><span>INTERACTIVE LAB</span><span class="chip">CONCEPT / v0.3</span></div>
   </header>
   <div class="intro">
     <p class="eyebrow">Ride screen concept · 480 × 800 px</p>
     <h1>Mehr Karte.<br><span>Weniger Ablenkung.</span></h1>
-    <p class="lead">Eine interaktive Vorschau unserer Karoo-Erweiterung: Navigation oben, Geschwindigkeit, Kadenz und Puls als eine kompakte Leiste. Probiere die Regler aus.</p>
+    <p class="lead">Eine interaktive Vorschau unserer Karoo-Erweiterung: Die Position bleibt fest, die Karte folgt deiner Fahrt. Geschwindigkeit, Kadenz und Puls erscheinen als kompakte Leiste.</p>
   </div>
   <main class="main">
     <section class="visual-stage" aria-label="Karoo-3-Simulator">
@@ -73,6 +73,7 @@
         <div class="screen" id="screen">
           <svg class="map" id="map" viewBox="0 0 480 800" aria-label="Schematische Demo-Navigationskarte, nicht geografisch korrekt">
             <g id="city">
+            <rect class="land" x="-1400" y="-1400" width="3300" height="3800"/>
             <rect class="land" x="0" y="0" width="480" height="800"/>
             <path class="park" d="M-30 20 Q118 4 182 84 L210 241 L146 325 L-30 291Z M335 500 Q390 467 530 482 L530 803 L370 803L321 642Z"/>
             <path class="water" d="M-45 570 Q100 551 171 615 T535 622 L535 697 Q352 648 237 683T-45 643Z"/>
@@ -104,11 +105,12 @@
             </g>
             <path class="route-border" id="routeOutline" d="M279 744L279 570Q284 512 286 478L269 430L230 321L190 310L189 205L189 120"/>
             <path class="route" id="routeLine" d="M279 744L279 570Q284 512 286 478L269 430L230 321L190 310L189 205L189 120"/>
-            <g id="marker" transform="translate(279 744)">
+            </g>
+            <!-- Rider anchored in one on-screen location. Map translates/rotates underneath. -->
+            <g id="marker" transform="translate(240 495)">
               <circle class="gps-pulse" r="30"/>
               <circle class="gps-marker" r="11"/>
               <path class="route-arrow" d="M0 -23L-7 -10H7Z"/>
-            </g>
             </g>
           </svg>
           <div class="screen-top"><span>KAROO · DEMO</span><div class="signal"><span>GPS</span><span>84%</span><div class="battery"><i></i></div></div></div>
@@ -125,7 +127,7 @@
           </div>
         </div>
       </div>
-      <div class="screen-footnote">SCHEMATISCHE KARTE · KEIN LIVE-GPS</div>
+      <div class="screen-footnote">GPS-FOLLOW · PFEIL BLEIBT FEST · DEMO-KARTE</div>
     </section>
     <section class="panel" aria-label="Simulatorsteuerung">
       <div class="box">
@@ -137,6 +139,7 @@
         <div class="button-row"><button id="play" class="primary">Ⅱ &nbsp;Pause</button><button id="reset" class="secondary">↺ &nbsp;Reset</button></div>
       </div>
       <div class="box"><div class="box-heading"><p class="sectionlabel">02 / Display &amp; Sensoren</p></div>
+        <div class="toggle-row"><span>Karte in Fahrtrichtung (Heading-up)</span><button class="switch" id="headingUp" role="switch" aria-checked="true" aria-label="Karte in Fahrtrichtung"></button></div>
         <div class="toggle-row"><span>Nachtmodus</span><button class="switch" id="night" role="switch" aria-checked="false" aria-label="Nachtmodus"></button></div>
         <div class="toggle-row"><span>Kadenzsensor verbunden</span><button class="switch" id="cadenceConnected" role="switch" aria-checked="true" aria-label="Kadenzsensor verbunden"></button></div>
         <div class="toggle-row"><span>Pulssensor verbunden</span><button class="switch" id="hrConnected" role="switch" aria-checked="true" aria-label="Pulssensor verbunden"></button></div>
@@ -144,7 +147,7 @@
         <div class="info"><div class="info-card"><div class="sectionlabel">FAHRTZEIT</div><div class="info-value" id="rideTime">00:13:41</div><div class="info-caption">Virtuell · 16× Vorschub</div></div><div class="info-card"><div class="sectionlabel">KARTENANTEIL</div><div class="info-value">87%</div><div class="info-caption">Der sichtbaren Fläche*</div></div></div>
         <p class="small-note">*Anteil oberhalb der simulierten 102-Pixel-Datenleiste; Abbiegehinweise können die sichtbare Karte zusätzlich überdecken.</p>
       </div>
-      <div class="box"><p class="sectionlabel">03 / Was simuliert wird</p><p class="small-note">Design, Datenfeld-Größen, Abbiegehinweis, Sensor-Ausfall und Bewegung auf einer <b>frei gezeichneten Demo-Karte</b>. Kein echtes Hammerhead-Betriebssystem, keine Offline-Karten, keine Bluetooth-Sensoren und kein APK-Test.</p></div>
+      <div class="box"><p class="sectionlabel">03 / Was simuliert wird</p><p class="small-note">Design, Datenfeld-Größen, Abbiegehinweis, Sensor-Ausfall und <b>GPS-Follow</b> mit festem Positionspfeil auf einer frei gezeichneten Demo-Karte. Kein echtes Hammerhead-Betriebssystem, keine Offline-Karten, keine Bluetooth-Sensoren und kein APK-Test.</p></div>
     </section>
   </main>
   <footer class="footer"><span>KAROO / MINIMAL · INTERACTIVE PROTOTYPE · 2026</span><span>Für eine echte Fahrt: <a href="https://github.com/derB3rt/karoo-minimal" target="_blank" rel="noopener">Android-Quellcode auf GitHub ↗</a></span></footer>
@@ -153,13 +156,16 @@
 (()=>{
  'use strict';
  const $=id=>document.getElementById(id), formatSpeed=x=>Number(x).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1});
- const s={running:true,progress:0.22,elapsed:13*60+41,zoom:1,speed:27.8,cadence:86,hr:143,night:false,cadenceConnected:true,hrConnected:true};
+ const s={running:true,progress:0.22,elapsed:13*60+41,zoom:1,speed:27.8,cadence:86,hr:143,night:false,cadenceConnected:true,hrConnected:true,headingUp:true};
  let last=0; const route=$('routeLine'), marker=$('marker'); const length=route.getTotalLength();
  function updateMap(){
    const p=route.getPointAtLength(length*s.progress),q=route.getPointAtLength(length*Math.min(1,s.progress+0.014));
    const angle=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI +90;
-   marker.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${angle})`);
-   const w=480/s.zoom,h=800/s.zoom,x=240-w/2,y=400-h/2; $('map').setAttribute('viewBox',`${x} ${y} ${w} ${h}`);
+   // Like Karoo's locked GPS-follow view: the rider stays near the lower centre.
+   // Heading-up rotates the map; north-up rotates the rider arrow instead.
+   const headingRotation=s.headingUp?-angle:0;
+   $('city').setAttribute('transform',`translate(240 495) rotate(${headingRotation}) scale(${s.zoom}) translate(${-p.x} ${-p.y})`);
+   marker.setAttribute('transform',`translate(240 495) rotate(${s.headingUp?0:angle})`);
    $('remain').textContent=`${(5*(1-s.progress)).toFixed(1).replace('.',',')} km übrig`;
    $('turnDist').textContent=`${Math.max(15,Math.round(350*(1-s.progress)/10)*10)} m`;
  }
@@ -170,12 +176,12 @@
    $('cadenceMetric').classList.toggle('no-signal',!s.cadenceConnected);$('hrMetric').classList.toggle('no-signal',!s.hrConnected);
    $('screen').classList.toggle('night',s.night);
    $('play').textContent=s.running?'Ⅱ   Pause':'▶   Fortsetzen';
-   for(const id of ['night','cadenceConnected','hrConnected'])$(id).setAttribute('aria-checked',String(s[id]));
+   for(const id of ['headingUp','night','cadenceConnected','hrConnected'])$(id).setAttribute('aria-checked',String(s[id]));
    const h=Math.floor(s.elapsed/3600),m=Math.floor(s.elapsed%3600/60),sec=Math.floor(s.elapsed%60);
    $('rideTime').textContent=[h,m,sec].map(x=>String(x).padStart(2,'0')).join(':');updateMap();
  }
  for(const id of ['speed','cadence','hr'])$(id).addEventListener('input',e=>{s[id]=+e.target.value;render();});
- for(const id of ['night','cadenceConnected','hrConnected'])$(id).addEventListener('click',()=>{s[id]=!s[id];render();});
+ for(const id of ['headingUp','night','cadenceConnected','hrConnected'])$(id).addEventListener('click',()=>{s[id]=!s[id];render();});
  $('play').addEventListener('click',()=>{s.running=!s.running;render();});
  $('reset').addEventListener('click',()=>{Object.assign(s,{running:true,progress:.22,elapsed:821,speed:27.8,cadence:86,hr:143,zoom:1});for(const id of ['speed','cadence','hr'])$(id).value=s[id];render();});
  $('zoomIn').addEventListener('click',()=>{s.zoom=Math.min(2,s.zoom+.2);render();});
