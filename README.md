@@ -6,7 +6,7 @@ Ein minimalistisches **3-in-1-Datenfeld** für die originale Navigationskarte de
 
 | Normale Fahrt – freie Karte | Kurz vor der Abbiegung |
 | :---: | :---: |
-| ![Karte ohne Abbiegehinweis und mit schmaler Datenleiste](docs/preview.svg) | ![Karte mit kontextabhängigem Abbiegehinweis](docs/preview-turn.svg) |
+| ![Karte ohne Abbiegehinweis und mit schmaler Datenleiste](docs/preview-v04.svg) | ![Karte mit kontextabhängigem Abbiegehinweis](docs/preview-turn-v04.svg) |
 
 [**Interaktiven Simulator testen**](docs/simulator.html) · [Vorschauen groß ansehen](docs/preview.html)
 

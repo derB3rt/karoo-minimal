@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-label="Vorschau der freien Navigationskarte mit kompakter Datenleiste, Karoo Minimal 0.4">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152735"/><stop offset="1" stop-color="#080e16"/></linearGradient>
+  <linearGradient id="field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#172b37"/><stop offset="1" stop-color="#0a1721"/></linearGradient>
+  <clipPath id="screen"><rect x="104" y="78" width="288" height="560" rx="15"/></clipPath>
+</defs>
+<rect width="1120" height="720" fill="url(#bg)"/>
+<circle cx="247" cy="360" r="290" fill="#335464" opacity=".18"/>
+<!-- Device -->
+<rect x="77" y="47" width="342" height="626" rx="35" fill="#060b11" stroke="#445867" stroke-width="7"/>
+<rect x="68" y="173" width="8" height="49" rx="3" fill="#394953"/>
+<rect x="68" y="257" width="8" height="49" rx="3" fill="#394953"/>
+<rect x="420" y="173" width="8" height="49" rx="3" fill="#394953"/>
+<rect x="420" y="257" width="8" height="49" rx="3" fill="#394953"/>
+<g clip-path="url(#screen)">
+ <rect x="104" y="78" width="288" height="560" fill="#dce5dc"/>
+ <path d="M100 190 L185 185 L221 244 L219 320 L100 343Z M309 402 Q367 360 405 411 L405 585 L317 566Z" fill="#c2d7b9"/>
+ <path d="M100 485 Q187 471 235 512 T395 526 L395 569 Q275 540 212 547T100 530Z" fill="#acd7d8"/>
+ <g fill="#c2cec6">
+  <path d="M115 125h56v38h-56z M187 123h57v45h-57z M261 117h55v49h-55z M331 111h54v51h-54z M115 212h58v46h-58z M187 214h55v53h-55z M264 214h51v50h-51z M331 214h53v51h-53z M112 352h54v49h-54z M180 347h57v50h-57z M259 348h55v52h-55z M328 344h50v55h-50z M117 441h56v50h-56z M189 447h54v45h-54z M328 447h53v41h-53z"/>
+ </g>
+ <g fill="none" stroke="#c7d3cd" stroke-width="31" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M99 293H404"/><path d="M100 423H402"/><path d="M197 66V293L230 363L266 447L262 649"/><path d="M335 66V646"/><path d="M106 493Q195 479 251 504T401 506"/>
+ </g>
+ <g fill="none" stroke="#faf9f1" stroke-width="23" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M99 293H404"/><path d="M100 423H402"/><path d="M197 66V293L230 363L266 447L262 649"/><path d="M335 66V646"/><path d="M106 493Q195 479 251 504T401 506"/>
+ </g>
+ <g fill="none" stroke="#d5ddd7" stroke-width="11" stroke-linecap="round">
+ <path d="M112 80V639"/><path d="M375 80V640"/><path d="M100 188H391"/><path d="M104 335H393"/>
+ </g>
+ <g fill="none" stroke="#f7f9f2" stroke-width="6" stroke-linecap="round">
+ <path d="M112 80V639"/><path d="M375 80V640"/><path d="M100 188H391"/><path d="M104 335H393"/>
+ </g>
+ <g fill="#57756f" font-family="Arial,sans-serif" font-size="9" letter-spacing=".4">
+ <text x="234" y="278">WARSCHAUER STR.</text><text x="113" y="410">BOXHAGENER STR.</text><text x="284" y="494">GRÜNBERGER STR.</text>
+ </g>
+ <path d="M260 588L260 513L266 446L230 362L196 293L197 203L197 148" fill="none" stroke="#1d5256" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M260 588L260 513L266 446L230 362L196 293L197 203L197 148" fill="none" stroke="#50e0cb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+ <circle cx="266" cy="448" r="24" fill="#34cbb8" opacity=".19"/>
+ <circle cx="266" cy="448" r="11" fill="#fff" stroke="#108f90" stroke-width="5"/>
+ <path d="M266 425L258 438H274Z" fill="#0c615e" stroke="#c1f8f1" stroke-width="2"/>
+ <!-- compact metrics 72px simulator scaled to 50px -->
+ <rect x="104" y="588" width="288" height="50" fill="#0c1924"/>
+ <rect x="110" y="591" width="101" height="43" rx="7" fill="url(#field)"/>
+ <rect x="213" y="591" width="80" height="43" rx="5" fill="url(#field)"/>
+ <rect x="295" y="591" width="92" height="43" rx="7" fill="url(#field)"/>
+ <path d="M212 597V629 M294 597V629" stroke="#46505e" stroke-width="1"/>
+ <g text-anchor="middle" font-family="Arial,sans-serif" font-weight="800">
+ <text x="161" y="617" font-size="25" fill="#99eee0">27,8</text>
+ <text x="253" y="616" font-size="23" fill="#fff">86</text>
+ <text x="340" y="616" font-size="23" fill="#f6a5b3">143</text>
+ </g>
+ <g text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" letter-spacing=".2" fill="#b1c5ce">
+ <text x="161" y="629">KM/H · SPEED</text><text x="253" y="629">RPM · CAD</text><text x="340" y="629">BPM · HR</text>
+ </g>
+ <text x="118" y="95" font-size="10" font-weight="800" font-family="Arial,sans-serif" letter-spacing="1" fill="#365864">KAROO · DEMO</text>
+ <text x="337" y="95" font-size="10" font-weight="800" font-family="Arial,sans-serif" fill="#365864">84%</text>
+ 
+</g>
+<!-- presentation -->
+<text x="485" y="133" font-size="15" font-family="Arial,sans-serif" font-weight="700" letter-spacing="3" fill="#9cf2e6">KAROO MINIMAL / V0.4</text>
+<text x="485" y="215" font-size="55" font-family="Arial,sans-serif" font-weight="800" fill="#f0f7fa">Mehr Karte.</text>
+<text x="485" y="278" font-size="55" font-family="Arial,sans-serif" font-weight="800" fill="#97ebdd">Weniger Ablenkung.</text>
+<text x="485" y="338" font-size="20" font-family="Arial,sans-serif" fill="#bdd1d9">Konzentrierte Navigation ohne permanente Hinweise.</text>
+<line x1="485" y1="383" x2="1065" y2="383" stroke="#355161"/>
+<text x="485" y="432" font-size="21" font-family="Arial,sans-serif" font-weight="700" fill="#f3f9fb">3 Werte. 1 Datenfeld.</text>
+<text x="485" y="471" font-size="17" font-family="Arial,sans-serif" fill="#bdd1d9">Geschwindigkeit · Kadenz · Herzfrequenz</text>
+<text x="485" y="518" font-size="17" font-family="Arial,sans-serif" fill="#bdd1d9">Die originale Karoo-Karte bleibt erhalten.</text>
+<rect x="485" y="549" width="268" height="41" rx="20" fill="#16382f" stroke="#377c71"/>
+<text x="505" y="575" font-size="15" font-family="Arial,sans-serif" font-weight="700" fill="#a6f4e6">STANDARD / FREIE KARTE</text>
+<text x="485" y="632" font-size="14" font-family="Arial,sans-serif" fill="#8ea9b5">Illustration des Simulators, kein Screenshot der Karoo-Firmware.</text>
+</svg>
