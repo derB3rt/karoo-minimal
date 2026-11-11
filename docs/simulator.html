@@ -33,14 +33,14 @@
     .route-arrow{fill:#073634;stroke:#affcf0;stroke-width:2}.gps-pulse{fill:#5fe8d6;opacity:.21}.gps-marker{fill:#f8ffff;stroke:#0d8f91;stroke-width:6}
     .screen-top{position:absolute;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;color:var(--maptextmajor);font-size:10px;font-weight:900;letter-spacing:.12em;background:linear-gradient(180deg,#00000016,transparent)}
     .signal{display:flex;align-items:center;gap:7px}.battery{width:26px;height:11px;border:2px solid currentColor;border-radius:3px;position:relative}.battery:after{content:"";position:absolute;right:-5px;top:2px;width:3px;height:4px;background:currentColor}.battery i{display:block;background:currentColor;width:83%;height:100%}
-    .turnbox{position:absolute;top:38px;left:10px;right:10px;border-radius:14px;background:#101d28;box-shadow:0 7px 19px #10232235;color:#fff;display:flex;align-items:center;gap:13px;padding:13px 15px;min-height:72px}
+    .turnbox{position:absolute;top:38px;left:10px;right:10px;border-radius:14px;background:#101d28;box-shadow:0 7px 19px #10232235;color:#fff;display:flex;align-items:center;gap:13px;padding:13px 15px;min-height:72px;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-9px);transition:opacity .2s,transform .2s,visibility .2s}.turnbox.show{opacity:1;visibility:visible;transform:translateY(0)}
     .turn-icon{width:31px;height:35px;flex-shrink:0}.turn-km{font-size:26px;font-weight:850;letter-spacing:-.06em;line-height:1}.turn-desc{font-size:11px;color:#a9c3cd;line-height:1.3;margin-top:4px;font-weight:550}.turn-tag{margin-left:auto;align-self:flex-start;font-size:9px;background:#1a4446;color:#a8f5e9;border-radius:20px;padding:4px 6px;white-space:nowrap}
-    .map-controls{position:absolute;right:10px;bottom:117px;display:flex;flex-direction:column;gap:5px}.map-controls button{width:30px;height:30px;border:none;background:#f9fffeeb;color:#27444a;border-radius:8px;font-size:19px;font-weight:700;box-shadow:0 1px 6px #12252c33}.screen.night .map-controls button{background:#193039ed;color:#d6ece9}
-    .road-distance{position:absolute;left:12px;bottom:128px;display:flex;align-items:center;gap:6px;color:#17373a;font-weight:800;font-size:10px;background:#ffffffdf;border-radius:8px;padding:7px 9px}.screen.night .road-distance{background:#223840;color:#d5eeed}
-    .metrics{position:absolute;bottom:0;left:0;right:0;height:102px;padding:6px;display:grid;grid-template-columns:1.19fr 1fr 1fr;gap:2px;background:#0c1924;box-shadow:0 -8px 20px #0c19242b}
-    .metric{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;position:relative;background:#13222e}.metric:first-child{border-radius:10px 2px 2px 10px}.metric:last-child{border-radius:2px 10px 10px 2px}.metric + .metric:before{content:"";position:absolute;left:-2px;top:22px;bottom:22px;width:1px;background:#3b4d59}
-    .val{font-family:Inter,ui-sans-serif,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;font-size:32px;font-weight:820;letter-spacing:-.07em;white-space:nowrap;line-height:1.13;color:#f9fbff}.metric.main .val{color:#93f0dd;font-size:38px}.metric.hr .val{color:#ffb0b9}
-    .mlabel{font-size:9px;font-weight:770;letter-spacing:.05em;color:#9fb5c1;white-space:nowrap;margin-top:6px}.metric.no-signal .val{opacity:.6}.metric.no-signal .mlabel{color:#718593}
+    .map-controls{position:absolute;right:10px;bottom:88px;display:flex;flex-direction:column;gap:5px}.map-controls button{width:30px;height:30px;border:none;background:#f9fffeeb;color:#27444a;border-radius:8px;font-size:19px;font-weight:700;box-shadow:0 1px 6px #12252c33}.screen.night .map-controls button{background:#193039ed;color:#d6ece9}
+    .road-distance{position:absolute;left:12px;bottom:99px;display:flex;align-items:center;gap:6px;color:#17373a;font-weight:800;font-size:10px;background:#ffffffdf;border-radius:8px;padding:7px 9px}.screen.night .road-distance{background:#223840;color:#d5eeed}
+    .metrics{position:absolute;bottom:0;left:0;right:0;height:72px;padding:4px;display:grid;grid-template-columns:1.17fr 1fr 1fr;gap:2px;background:#0c1924;box-shadow:0 -8px 20px #0c19242b}
+    .metric{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;position:relative;background:#13222e}.metric:first-child{border-radius:10px 2px 2px 10px}.metric:last-child{border-radius:2px 10px 10px 2px}.metric + .metric:before{content:"";position:absolute;left:-2px;top:12px;bottom:12px;width:1px;background:#3b4d59}
+    .val{font-family:Inter,ui-sans-serif,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;font-size:26px;font-weight:820;letter-spacing:-.07em;white-space:nowrap;line-height:1.13;color:#f9fbff}.metric.main .val{color:#93f0dd;font-size:30px}.metric.hr .val{color:#ffb0b9}
+    .mlabel{font-size:8px;font-weight:770;letter-spacing:.04em;color:#9fb5c1;white-space:nowrap;margin-top:2px}.metric.no-signal .val{opacity:.6}.metric.no-signal .mlabel{color:#718593}
     .screen-footnote{display:flex;align-items:center;justify-content:center;margin-top:15px;gap:8px;font-size:10px;font-weight:750;letter-spacing:.1em;color:#8daab7;z-index:1}
     .screen-footnote:before{content:"";height:5px;width:5px;border-radius:50%;background:#65dacb}
     .panel{display:flex;flex-direction:column;gap:15px}.box{border:1px solid #243846;border-radius:20px;background:#10202b9c;padding:23px 24px}.box-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.sectionlabel{margin:0;color:#8fa3b0;font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}.active{font-size:11px;color:#a4ebdc;display:flex;gap:7px;align-items:center}
@@ -58,12 +58,12 @@
 <div class="layout">
   <header class="top">
     <div class="brand"><div class="brand-mark">↗</div><span>KAROO / MINIMAL</span></div>
-    <div class="top-right"><span class="dot"></span><span>INTERACTIVE LAB</span><span class="chip">CONCEPT / v0.3</span></div>
+    <div class="top-right"><span class="dot"></span><span>INTERACTIVE LAB</span><span class="chip">CONCEPT / v0.4</span></div>
   </header>
   <div class="intro">
     <p class="eyebrow">Ride screen concept · 480 × 800 px</p>
     <h1>Mehr Karte.<br><span>Weniger Ablenkung.</span></h1>
-    <p class="lead">Eine interaktive Vorschau unserer Karoo-Erweiterung: Die Position bleibt fest, die Karte folgt deiner Fahrt. Geschwindigkeit, Kadenz und Puls erscheinen als kompakte Leiste.</p>
+    <p class="lead">Eine interaktive Vorschau unserer Karoo-Erweiterung: Die Position bleibt fest, die Karte folgt deiner Fahrt. Der Abbiegehinweis erscheint nur in den letzten 180 Metern; darunter bleibt die kompaktere Datenleiste.</p>
   </div>
   <main class="main">
     <section class="visual-stage" aria-label="Karoo-3-Simulator">
@@ -114,7 +114,7 @@
             </g>
           </svg>
           <div class="screen-top"><span>KAROO · DEMO</span><div class="signal"><span>GPS</span><span>84%</span><div class="battery"><i></i></div></div></div>
-          <div class="turnbox">
+          <div class="turnbox" id="turnbox" aria-hidden="true">
             <svg class="turn-icon" viewBox="0 0 40 45" aria-hidden="true"><path d="M27 43V18Q27 10 19 10H6 M6 10L16 2 M6 10L16 18" fill="none" stroke="#a2f8e8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><div class="turn-km" id="turnDist">350 m</div><div class="turn-desc">Links auf Warschauer Straße</div></div><span class="turn-tag">DEMO</span>
           </div>
@@ -135,6 +135,7 @@
         <div class="control"><div class="control-row"><label for="speed">Geschwindigkeit</label><strong><span id="speedLabel">27,8</span> <small>km/h</small></strong></div><input type="range" id="speed" min="0" max="50" step="0.5" value="27.8"><div class="range-limits"><span>0</span><span>50 km/h</span></div></div>
         <div class="control"><div class="control-row"><label for="cadence">Kadenz</label><strong><span id="cadenceLabel">86</span> <small>rpm</small></strong></div><input type="range" id="cadence" min="0" max="130" step="1" value="86"><div class="range-limits"><span>0</span><span>130 rpm</span></div></div>
         <div class="control hr"><div class="control-row"><label for="hr">Herzfrequenz</label><strong><span id="hrLabel">143</span> <small>bpm</small></strong></div><input type="range" id="hr" min="70" max="200" step="1" value="143"><div class="range-limits"><span>70</span><span>200 bpm</span></div></div>
+        <div class="control"><div class="control-row"><label for="routeProgress">Position auf der Route</label><strong><span id="progressLabel">22</span> <small>%</small></strong></div><input type="range" id="routeProgress" min="0" max="100" step="1" value="22"><div class="range-limits"><span>Start</span><span>Abbiegehinweis erst ab 180 m</span><span>Ziel</span></div></div>
         <div class="divider"></div>
         <div class="button-row"><button id="play" class="primary">Ⅱ &nbsp;Pause</button><button id="reset" class="secondary">↺ &nbsp;Reset</button></div>
       </div>
@@ -144,10 +145,10 @@
         <div class="toggle-row"><span>Kadenzsensor verbunden</span><button class="switch" id="cadenceConnected" role="switch" aria-checked="true" aria-label="Kadenzsensor verbunden"></button></div>
         <div class="toggle-row"><span>Pulssensor verbunden</span><button class="switch" id="hrConnected" role="switch" aria-checked="true" aria-label="Pulssensor verbunden"></button></div>
         <div class="divider"></div>
-        <div class="info"><div class="info-card"><div class="sectionlabel">FAHRTZEIT</div><div class="info-value" id="rideTime">00:13:41</div><div class="info-caption">Virtuell · 16× Vorschub</div></div><div class="info-card"><div class="sectionlabel">KARTENANTEIL</div><div class="info-value">87%</div><div class="info-caption">Der sichtbaren Fläche*</div></div></div>
-        <p class="small-note">*Anteil oberhalb der simulierten 102-Pixel-Datenleiste; Abbiegehinweise können die sichtbare Karte zusätzlich überdecken.</p>
+        <div class="info"><div class="info-card"><div class="sectionlabel">FAHRTZEIT</div><div class="info-value" id="rideTime">00:13:41</div><div class="info-caption">Virtuell · 8× Vorschub</div></div><div class="info-card"><div class="sectionlabel">KARTENANTEIL</div><div class="info-value">91%</div><div class="info-caption">Der sichtbaren Fläche*</div></div></div>
+        <p class="small-note">*Anteil oberhalb der simulierten 72-Pixel-Datenleiste; Abbiegehinweise können die sichtbare Karte zusätzlich überdecken.</p>
       </div>
-      <div class="box"><p class="sectionlabel">03 / Was simuliert wird</p><p class="small-note">Design, Datenfeld-Größen, Abbiegehinweis, Sensor-Ausfall und <b>GPS-Follow</b> mit festem Positionspfeil auf einer frei gezeichneten Demo-Karte. Kein echtes Hammerhead-Betriebssystem, keine Offline-Karten, keine Bluetooth-Sensoren und kein APK-Test.</p></div>
+      <div class="box"><p class="sectionlabel">03 / Was simuliert wird</p><p class="small-note">Design, kompakte Datenleiste, kontextabhängiger Abbiegehinweis, Sensor-Ausfall und <b>GPS-Follow</b> mit festem Positionspfeil auf einer frei gezeichneten Demo-Karte. Kein echtes Hammerhead-Betriebssystem, keine Offline-Karten, keine Bluetooth-Sensoren und kein APK-Test.</p></div>
     </section>
   </main>
   <footer class="footer"><span>KAROO / MINIMAL · INTERACTIVE PROTOTYPE · 2026</span><span>Für eine echte Fahrt: <a href="https://github.com/derB3rt/karoo-minimal" target="_blank" rel="noopener">Android-Quellcode auf GitHub ↗</a></span></footer>
@@ -158,6 +159,14 @@
  const $=id=>document.getElementById(id), formatSpeed=x=>Number(x).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1});
  const s={running:true,progress:0.22,elapsed:13*60+41,zoom:1,speed:27.8,cadence:86,hr:143,night:false,cadenceConnected:true,hrConnected:true,headingUp:true};
  let last=0; const route=$('routeLine'), marker=$('marker'); const length=route.getTotalLength();
+ // Detect the left turn at the geometry's bend, rather than showing a permanent navigation banner.
+ let turnAt=0,turnError=Infinity;
+ for(let i=0;i<=1200;i++){
+   const d=i/1200*length,p=route.getPointAtLength(d);
+   const error=(p.x-230)**2+(p.y-321)**2;
+   if(error<turnError){turnError=error;turnAt=d;}
+ }
+ const turnProgress=turnAt/length;
  function updateMap(){
    const p=route.getPointAtLength(length*s.progress),q=route.getPointAtLength(length*Math.min(1,s.progress+0.014));
    const angle=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI +90;
@@ -167,7 +176,11 @@
    $('city').setAttribute('transform',`translate(240 495) rotate(${headingRotation}) scale(${s.zoom}) translate(${-p.x} ${-p.y})`);
    marker.setAttribute('transform',`translate(240 495) rotate(${s.headingUp?0:angle})`);
    $('remain').textContent=`${(5*(1-s.progress)).toFixed(1).replace('.',',')} km übrig`;
-   $('turnDist').textContent=`${Math.max(15,Math.round(350*(1-s.progress)/10)*10)} m`;
+   const distanceToTurn=(turnProgress-s.progress)*5000;
+   const showTurn=distanceToTurn>0 && distanceToTurn<=180;
+   $('turnbox').classList.toggle('show',showTurn);
+   $('turnbox').setAttribute('aria-hidden',String(!showTurn));
+   $('turnDist').textContent=`${Math.max(10,Math.round(distanceToTurn/10)*10)} m`;
  }
  function render(){
    $('speedDisplay').textContent=formatSpeed(s.speed);$('speedLabel').textContent=formatSpeed(s.speed);
@@ -178,15 +191,17 @@
    $('play').textContent=s.running?'Ⅱ   Pause':'▶   Fortsetzen';
    for(const id of ['headingUp','night','cadenceConnected','hrConnected'])$(id).setAttribute('aria-checked',String(s[id]));
    const h=Math.floor(s.elapsed/3600),m=Math.floor(s.elapsed%3600/60),sec=Math.floor(s.elapsed%60);
-   $('rideTime').textContent=[h,m,sec].map(x=>String(x).padStart(2,'0')).join(':');updateMap();
+   $('rideTime').textContent=[h,m,sec].map(x=>String(x).padStart(2,'0')).join(':');
+   $('progressLabel').textContent=String(Math.round(s.progress*100));$('routeProgress').value=String(Math.round(s.progress*100));updateMap();
  }
  for(const id of ['speed','cadence','hr'])$(id).addEventListener('input',e=>{s[id]=+e.target.value;render();});
+ $('routeProgress').addEventListener('input',e=>{s.progress=Number(e.target.value)/100;render();});
  for(const id of ['headingUp','night','cadenceConnected','hrConnected'])$(id).addEventListener('click',()=>{s[id]=!s[id];render();});
  $('play').addEventListener('click',()=>{s.running=!s.running;render();});
  $('reset').addEventListener('click',()=>{Object.assign(s,{running:true,progress:.22,elapsed:821,speed:27.8,cadence:86,hr:143,zoom:1});for(const id of ['speed','cadence','hr'])$(id).value=s[id];render();});
  $('zoomIn').addEventListener('click',()=>{s.zoom=Math.min(2,s.zoom+.2);render();});
  $('zoomOut').addEventListener('click',()=>{s.zoom=Math.max(1,s.zoom-.2);render();});
- function animate(ts){if(!last)last=ts;const dt=Math.min((ts-last)/1000,.1);last=ts;if(s.running){s.elapsed+=dt*16; s.progress=(s.progress + dt*(s.speed/3.6/5000)*16) % .94;render();}requestAnimationFrame(animate);}render();requestAnimationFrame(animate);
+ function animate(ts){if(!last)last=ts;const dt=Math.min((ts-last)/1000,.1);last=ts;if(s.running){s.elapsed+=dt*8; s.progress=(s.progress + dt*(s.speed/3.6/5000)*8) % .94;render();}requestAnimationFrame(animate);}render();requestAnimationFrame(animate);
 })()
 </script>
 </body>
