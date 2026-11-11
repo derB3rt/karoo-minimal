@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#090e16" />
+  <title>KAROO / MINIMAL — Interactive Simulator</title>
+  <style>
+    :root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#eaf2f6;background:#090e16;font-feature-settings:"tnum" 1}
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;background:radial-gradient(ellipse 75% 70% at 30% 30%,#152a37 0%,#0d1722 44%,#090e16 100%)}
+    button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #b4fbeb;outline-offset:3px}
+    .layout{width:min(1200px,100% - 48px);margin:auto;padding:35px 0 42px}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;font-weight:800}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid #5cd4c5;background:#132f34;color:#9dfff0;border-radius:11px;font-size:21px}
+    .top-right{display:flex;gap:9px;align-items:center;color:#9db0bc;font-size:12px}.dot{height:7px;width:7px;border-radius:50%;background:#8bf4d8;box-shadow:0 0 12px #8bf4d855}.chip{padding:7px 10px;border:1px solid #253544;border-radius:999px}
+    .intro{max-width:900px;margin:12px 0 30px}.eyebrow{text-transform:uppercase;color:#80d8cb;font-size:11px;font-weight:800;letter-spacing:.24em;margin:0 0 10px}
+    h1{font-size:clamp(30px,4.5vw,53px);font-weight:800;letter-spacing:-.065em;line-height:1.09;margin:0}h1 span{color:#90e9d7}
+    .lead{font-size:15px;color:#9fb2bf;line-height:1.65;margin:15px 0 0}
+    .main{display:grid;grid-template-columns:minmax(330px,520px) minmax(325px,1fr);gap:28px;align-items:stretch}
+    .visual-stage{border:1px solid #243846;border-radius:27px;background:linear-gradient(155deg,#122330cc,#0b1620cc);display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;padding:22px 24px 15px;overflow:hidden;box-shadow:0 22px 90px #02050922}
+    .grid-glow{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#24415122 1px,transparent 1px),linear-gradient(90deg,#24415122 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(circle at center,black,transparent 84%)}
+    .device{width:min(100%,351px);aspect-ratio: 480 / 848;background:#090c0e;border:5px solid #34414c;outline:2px solid #0b0d0f;border-radius:35px;padding:16px 10px;position:relative;box-shadow:10px 20px 45px #0009, inset 0 0 1px #b6c9d2;z-index:1}
+    .sidebutton{position:absolute;background:#26363f;width:6px;height:37px;border-radius:3px;left:-10px;top:22%}.sidebutton:nth-of-type(2){top:36%}.sidebutton.right{left:auto;right:-10px;top:24%}
+    .screen{height:100%;border-radius:14px;overflow:hidden;position:relative;background:#d8e4df;color:#132b30;--land:#dce5dc;--park:#c5dabc;--water:#add7d8;--bldg:#c2cfc6;--roadoutline:#c7d2cc;--road:#f8f7ed;--roadminor:#f1f4ee;--maptext:#687b78;--maptextmajor:#4a6668}
+    .screen.night{--land:#1c2e36;--park:#283e37;--water:#274955;--bldg:#33414a;--roadoutline:#1c333b;--road:#485b60;--roadminor:#3b5058;--maptext:#8fa4a3;--maptextmajor:#acbfbd;background:#1c2e36}
+    .map{position:absolute;inset:0 0 0 0;width:100%;height:100%;}
+    .map .land{fill:var(--land)}.map .park{fill:var(--park)}.map .water{fill:var(--water)}.map .blocks{fill:var(--bldg)}
+    .map .road-shadow{stroke:var(--roadoutline);fill:none;stroke-linejoin:round;stroke-linecap:round}
+    .map .road{stroke:var(--road);fill:none;stroke-linejoin:round;stroke-linecap:round}.map .minor{stroke:var(--roadminor)}
+    .map .label{font:500 11px Inter,ui-sans-serif,sans-serif;letter-spacing:.06em;fill:var(--maptext)}.map .major{font-weight:700;fill:var(--maptextmajor)}
+    .route-border{fill:none;stroke:#244e52;stroke-linecap:round;stroke-linejoin:round;stroke-width:15}.route{fill:none;stroke:#4be1cc;stroke-linecap:round;stroke-linejoin:round;stroke-width:9;stroke-dasharray:0}
+    .route-arrow{fill:#073634;stroke:#affcf0;stroke-width:2}.gps-pulse{fill:#5fe8d6;opacity:.21}.gps-marker{fill:#f8ffff;stroke:#0d8f91;stroke-width:6}
+    .screen-top{position:absolute;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;color:var(--maptextmajor);font-size:10px;font-weight:900;letter-spacing:.12em;background:linear-gradient(180deg,#00000016,transparent)}
+    .signal{display:flex;align-items:center;gap:7px}.battery{width:26px;height:11px;border:2px solid currentColor;border-radius:3px;position:relative}.battery:after{content:"";position:absolute;right:-5px;top:2px;width:3px;height:4px;background:currentColor}.battery i{display:block;background:currentColor;width:83%;height:100%}
+    .turnbox{position:absolute;top:38px;left:10px;right:10px;border-radius:14px;background:#101d28;box-shadow:0 7px 19px #10232235;color:#fff;display:flex;align-items:center;gap:13px;padding:13px 15px;min-height:72px}
+    .turn-icon{width:31px;height:35px;flex-shrink:0}.turn-km{font-size:26px;font-weight:850;letter-spacing:-.06em;line-height:1}.turn-desc{font-size:11px;color:#a9c3cd;line-height:1.3;margin-top:4px;font-weight:550}.turn-tag{margin-left:auto;align-self:flex-start;font-size:9px;background:#1a4446;color:#a8f5e9;border-radius:20px;padding:4px 6px;white-space:nowrap}
+    .map-controls{position:absolute;right:10px;bottom:117px;display:flex;flex-direction:column;gap:5px}.map-controls button{width:30px;height:30px;border:none;background:#f9fffeeb;color:#27444a;border-radius:8px;font-size:19px;font-weight:700;box-shadow:0 1px 6px #12252c33}.screen.night .map-controls button{background:#193039ed;color:#d6ece9}
+    .road-distance{position:absolute;left:12px;bottom:128px;display:flex;align-items:center;gap:6px;color:#17373a;font-weight:800;font-size:10px;background:#ffffffdf;border-radius:8px;padding:7px 9px}.screen.night .road-distance{background:#223840;color:#d5eeed}
+    .metrics{position:absolute;bottom:0;left:0;right:0;height:102px;padding:6px;display:grid;grid-template-columns:1.19fr 1fr 1fr;gap:2px;background:#0c1924;box-shadow:0 -8px 20px #0c19242b}
+    .metric{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;position:relative;background:#13222e}.metric:first-child{border-radius:10px 2px 2px 10px}.metric:last-child{border-radius:2px 10px 10px 2px}.metric + .metric:before{content:"";position:absolute;left:-2px;top:22px;bottom:22px;width:1px;background:#3b4d59}
+    .val{font-family:Inter,ui-sans-serif,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;font-size:32px;font-weight:820;letter-spacing:-.07em;white-space:nowrap;line-height:1.13;color:#f9fbff}.metric.main .val{color:#93f0dd;font-size:38px}.metric.hr .val{color:#ffb0b9}
+    .mlabel{font-size:9px;font-weight:770;letter-spacing:.05em;color:#9fb5c1;white-space:nowrap;margin-top:6px}.metric.no-signal .val{opacity:.6}.metric.no-signal .mlabel{color:#718593}
+    .screen-footnote{display:flex;align-items:center;justify-content:center;margin-top:15px;gap:8px;font-size:10px;font-weight:750;letter-spacing:.1em;color:#8daab7;z-index:1}
+    .screen-footnote:before{content:"";height:5px;width:5px;border-radius:50%;background:#65dacb}
+    .panel{display:flex;flex-direction:column;gap:15px}.box{border:1px solid #243846;border-radius:20px;background:#10202b9c;padding:23px 24px}.box-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.sectionlabel{margin:0;color:#8fa3b0;font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}.active{font-size:11px;color:#a4ebdc;display:flex;gap:7px;align-items:center}
+    .control-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}.control-row label{color:#d4e3eb;font-size:13px;font-weight:550}.control-row strong{font-size:16px;font-weight:800;letter-spacing:-.03em;color:#f5ffff}.control-row strong small{font-size:10px;color:#8fa6b3;margin-left:3px}.control+.control{margin-top:20px}
+    input[type=range]{width:100%;accent-color:#8ee8d9;cursor:pointer;height:6px}.control.hr input[type=range]{accent-color:#faabb5}.control .range-limits{display:flex;justify-content:space-between;color:#65808e;font-size:10px;margin-top:7px}
+    .button-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.primary,.secondary{padding:12px 8px;border-radius:11px;border:1px solid #314859;font-size:12px;font-weight:780}.primary{background:#98efdf;border-color:#98efdf;color:#102c32}.secondary{background:#122634;color:#d1e5e9}.primary:hover{background:#c3fff1}.secondary:hover{background:#1a3544}
+    .divider{height:1px;background:#263b49;margin:18px 0}.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:13px;color:#cad8de;font-size:12px}.switch{display:inline-flex;align-items:center;width:36px;height:22px;border-radius:999px;border:0;background:#3d4e5a;padding:3px;transition:background .2s}.switch:before{content:"";width:16px;height:16px;background:#c4d4db;border-radius:50%;transition:transform .2s}.switch[aria-checked=true]{background:#32766d}.switch[aria-checked=true]:before{transform:translateX(14px);background:#a7f5e6}
+    .info{display:grid;grid-template-columns:1fr 1fr;gap:13px}.info-card{background:#0c1a25;border:1px solid #253745;border-radius:14px;padding:14px}.info-value{font-size:22px;letter-spacing:-.04em;font-weight:800;color:#e2f2f5;margin:6px 0 4px}.info-caption{font-size:10px;color:#809eaa}.small-note{color:#8ea9b6;font-size:11px;line-height:1.6;margin:13px 0 0}.footer{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#718b97;font-size:11px;margin-top:24px}.footer a{color:#9ce8dd;text-decoration:none}.footer a:hover{text-decoration:underline}
+    @media(max-width:870px){.main{grid-template-columns:1fr;gap:18px}.visual-stage{padding:20px 16px}.device{width:min(100%,350px)}.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel .box:first-child{grid-row:span 2}.intro{margin-bottom:19px}}
+    @media(max-width:640px){.layout{width:min(100% - 24px,540px);padding-top:20px}.top-right .chip{display:none}h1{font-size:33px}.lead{font-size:13px}.main{gap:14px}.panel{display:flex}.box{padding:19px 18px}.device{width:min(100%,338px)}.footer{flex-direction:column;align-items:flex-start}.screen-footnote{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:0.001ms!important}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <header class="top">
+    <div class="brand"><div class="brand-mark">↗</div><span>KAROO / MINIMAL</span></div>
+    <div class="top-right"><span class="dot"></span><span>INTERACTIVE LAB</span><span class="chip">CONCEPT / v0.2</span></div>
+  </header>
+  <div class="intro">
+    <p class="eyebrow">Ride screen concept · 480 × 800 px</p>
+    <h1>Mehr Karte.<br><span>Weniger Ablenkung.</span></h1>
+    <p class="lead">Eine interaktive Vorschau unserer Karoo-Erweiterung: Navigation oben, Geschwindigkeit, Kadenz und Puls als eine kompakte Leiste. Probiere die Regler aus.</p>
+  </div>
+  <main class="main">
+    <section class="visual-stage" aria-label="Karoo-3-Simulator">
+      <div class="grid-glow"></div>
+      <div class="device">
+        <div class="sidebutton"></div><div class="sidebutton"></div><div class="sidebutton right"></div><div class="sidebutton right"></div>
+        <div class="screen" id="screen">
+          <svg class="map" id="map" viewBox="0 0 480 800" aria-label="Schematische Demo-Navigationskarte, nicht geografisch korrekt">
+            <g id="city">
+            <rect class="land" x="0" y="0" width="480" height="800"/>
+            <path class="park" d="M-30 20 Q118 4 182 84 L210 241 L146 325 L-30 291Z M335 500 Q390 467 530 482 L530 803 L370 803L321 642Z"/>
+            <path class="water" d="M-45 570 Q100 551 171 615 T535 622 L535 697 Q352 648 237 683T-45 643Z"/>
+            <g class="blocks">
+            <path d="M228 29h63v43h-63z M300 20h54v75h-54z M363 21h87v72h-87z M225 111h73v74h-73z M316 114h59v71h-59z M390 114h64v76h-64z M211 222h61v62h-61z M291 212h82v68h-82z M390 222h68v72h-68z M24 347h109v58H24z M154 338h80v70h-80z M253 340h93v75h-93z M361 341h100v62h-100z M29 446h93v67H29z M143 444h78v79h-78z M236 450h83v75h-83z M329 447h94v45h-94z M29 696h97v71H29z M144 700h107v73H144z M268 711h73v69h-73z M376 705h70v70h-70z"/>
+            <path d="M36 221h61v47H36z M119 218h68v49h-68z M15 112h88v47H15z M129 117h53v71h-53z" />
+            </g>
+            <g class="road-shadow" stroke-width="37">
+              <path d="M-42 313L533 305"/><path d="M-24 430L535 425"/><path d="M197 -38L188 255L227 323L286 476L279 831"/><path d="M343 -40L338 194L337 309L353 467L347 835"/>
+              <path d="M-28 550Q161 534 247 570T535 574"/>
+            </g>
+            <g class="road" stroke-width="29">
+              <path d="M-42 313L533 305"/><path d="M-24 430L535 425"/><path d="M197 -38L188 255L227 323L286 476L279 831"/><path d="M343 -40L338 194L337 309L353 467L347 835"/>
+              <path d="M-28 550Q161 534 247 570T535 574"/>
+            </g>
+            <g class="road-shadow" stroke-width="17">
+              <path d="M105 -30L111 315L117 531"/><path d="M450 -30L457 300L464 824"/><path d="M-23 93L524 97"/><path d="M-15 202L511 204"/><path d="M-26 687L532 695"/>
+            </g>
+            <g class="road minor" stroke-width="13">
+              <path d="M105 -30L111 315L117 531"/><path d="M450 -30L457 300L464 824"/><path d="M-23 93L524 97"/><path d="M-15 202L511 204"/><path d="M-26 687L532 695"/>
+            </g>
+            <g class="label">
+              <text x="15" y="184" transform="rotate(-90 15,184)">PARKANLAGE</text>
+              <text class="major" x="256" y="295">WARSCHAUER STRASSE</text>
+              <text x="15" y="412">BOXHAGENER STR.</text>
+              <text x="300" y="545">GRÜNBERGER STR.</text>
+              <text x="41" y="676">DEMO-SPREE</text>
+              <text class="major" x="270" y="751">FRIEDRICHSHAIN</text>
+            </g>
+            <path class="route-border" id="routeOutline" d="M279 744L279 570Q284 512 286 478L269 430L230 321L190 310L189 205L189 120"/>
+            <path class="route" id="routeLine" d="M279 744L279 570Q284 512 286 478L269 430L230 321L190 310L189 205L189 120"/>
+            <g id="marker" transform="translate(279 744)">
+              <circle class="gps-pulse" r="30"/>
+              <circle class="gps-marker" r="11"/>
+              <path class="route-arrow" d="M0 -23L-7 -10H7Z"/>
+            </g>
+            </g>
+          </svg>
+          <div class="screen-top"><span>KAROO · DEMO</span><div class="signal"><span>GPS</span><span>84%</span><div class="battery"><i></i></div></div></div>
+          <div class="turnbox">
+            <svg class="turn-icon" viewBox="0 0 40 45" aria-hidden="true"><path d="M27 43V18Q27 10 19 10H6 M6 10L16 2 M6 10L16 18" fill="none" stroke="#a2f8e8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div class="turn-km" id="turnDist">350 m</div><div class="turn-desc">Links auf Warschauer Straße</div></div><span class="turn-tag">DEMO</span>
+          </div>
+          <div class="road-distance"><span>↗</span><span id="remain">4,8 km übrig</span></div>
+          <div class="map-controls"><button id="zoomIn" title="Karte vergrößern" aria-label="Karte vergrößern">+</button><button id="zoomOut" title="Karte verkleinern" aria-label="Karte verkleinern">−</button></div>
+          <div class="metrics">
+            <div class="metric main" id="speedMetric"><div class="val" id="speedDisplay">27,8</div><div class="mlabel">KM/H · SPEED</div></div>
+            <div class="metric" id="cadenceMetric"><div class="val" id="cadenceDisplay">86</div><div class="mlabel">RPM · KADENZ</div></div>
+            <div class="metric hr" id="hrMetric"><div class="val" id="hrDisplay">143</div><div class="mlabel">BPM · PULS</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-footnote">SCHEMATISCHE KARTE · KEIN LIVE-GPS</div>
+    </section>
+    <section class="panel" aria-label="Simulatorsteuerung">
+      <div class="box">
+        <div class="box-heading"><p class="sectionlabel">01 / Live-Fahrdaten</p><span class="active"><span class="dot"></span>SIMULIERT</span></div>
+        <div class="control"><div class="control-row"><label for="speed">Geschwindigkeit</label><strong><span id="speedLabel">27,8</span> <small>km/h</small></strong></div><input type="range" id="speed" min="0" max="50" step="0.5" value="27.8"><div class="range-limits"><span>0</span><span>50 km/h</span></div></div>
+        <div class="control"><div class="control-row"><label for="cadence">Kadenz</label><strong><span id="cadenceLabel">86</span> <small>rpm</small></strong></div><input type="range" id="cadence" min="0" max="130" step="1" value="86"><div class="range-limits"><span>0</span><span>130 rpm</span></div></div>
+        <div class="control hr"><div class="control-row"><label for="hr">Herzfrequenz</label><strong><span id="hrLabel">143</span> <small>bpm</small></strong></div><input type="range" id="hr" min="70" max="200" step="1" value="143"><div class="range-limits"><span>70</span><span>200 bpm</span></div></div>
+        <div class="divider"></div>
+        <div class="button-row"><button id="play" class="primary">Ⅱ &nbsp;Pause</button><button id="reset" class="secondary">↺ &nbsp;Reset</button></div>
+      </div>
+      <div class="box"><div class="box-heading"><p class="sectionlabel">02 / Display &amp; Sensoren</p></div>
+        <div class="toggle-row"><span>Nachtmodus</span><button class="switch" id="night" role="switch" aria-checked="false" aria-label="Nachtmodus"></button></div>
+        <div class="toggle-row"><span>Kadenzsensor verbunden</span><button class="switch" id="cadenceConnected" role="switch" aria-checked="true" aria-label="Kadenzsensor verbunden"></button></div>
+        <div class="toggle-row"><span>Pulssensor verbunden</span><button class="switch" id="hrConnected" role="switch" aria-checked="true" aria-label="Pulssensor verbunden"></button></div>
+        <div class="divider"></div>
+        <div class="info"><div class="info-card"><div class="sectionlabel">FAHRTZEIT</div><div class="info-value" id="rideTime">00:13:41</div><div class="info-caption">Virtuell · 16× Vorschub</div></div><div class="info-card"><div class="sectionlabel">KARTENANTEIL</div><div class="info-value">87%</div><div class="info-caption">Der sichtbaren Fläche*</div></div></div>
+        <p class="small-note">*Anteil oberhalb der simulierten 102-Pixel-Datenleiste; Abbiegehinweise können die sichtbare Karte zusätzlich überdecken.</p>
+      </div>
+      <div class="box"><p class="sectionlabel">03 / Was simuliert wird</p><p class="small-note">Design, Datenfeld-Größen, Abbiegehinweis, Sensor-Ausfall und Bewegung auf einer <b>frei gezeichneten Demo-Karte</b>. Kein echtes Hammerhead-Betriebssystem, keine Offline-Karten, keine Bluetooth-Sensoren und kein APK-Test.</p></div>
+    </section>
+  </main>
+  <footer class="footer"><span>KAROO / MINIMAL · INTERACTIVE PROTOTYPE · 2026</span><span>Für eine echte Fahrt: <a href="https://github.com/derB3rt/karoo-minimal" target="_blank" rel="noopener">Android-Quellcode auf GitHub ↗</a></span></footer>
+</div>
+<script>
+(()=>{
+ 'use strict';
+ const $=id=>document.getElementById(id), formatSpeed=x=>Number(x).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1});
+ const s={running:true,progress:0.05,elapsed:13*60+41,zoom:1,speed:27.8,cadence:86,hr:143,night:false,cadenceConnected:true,hrConnected:true};
+ let last=0; const route=$('routeLine'), marker=$('marker'); const length=route.getTotalLength();
+ function updateMap(){
+   const p=route.getPointAtLength(length*(1-s.progress)),q=route.getPointAtLength(length*Math.max(0,1-s.progress-0.014));
+   const angle=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI +90;
+   marker.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${angle})`);
+   const w=480/s.zoom,h=800/s.zoom,x=240-w/2,y=400-h/2; $('map').setAttribute('viewBox',`${x} ${y} ${w} ${h}`);
+   $('remain').textContent=`${(5*(1-s.progress)).toFixed(1).replace('.',',')} km übrig`;
+   $('turnDist').textContent=`${Math.max(15,Math.round(350*(1-s.progress)/10)*10)} m`;
+ }
+ function render(){
+   $('speedDisplay').textContent=formatSpeed(s.speed);$('speedLabel').textContent=formatSpeed(s.speed);
+   $('cadenceDisplay').textContent=s.cadenceConnected?Math.round(s.cadence):'—';$('cadenceLabel').textContent=String(Math.round(s.cadence));
+   $('hrDisplay').textContent=s.hrConnected?Math.round(s.hr):'—';$('hrLabel').textContent=String(Math.round(s.hr));
+   $('cadenceMetric').classList.toggle('no-signal',!s.cadenceConnected);$('hrMetric').classList.toggle('no-signal',!s.hrConnected);
+   $('screen').classList.toggle('night',s.night);
+   $('play').textContent=s.running?'Ⅱ   Pause':'▶   Fortsetzen';
+   for(const id of ['night','cadenceConnected','hrConnected'])$(id).setAttribute('aria-checked',String(s[id]));
+   const h=Math.floor(s.elapsed/3600),m=Math.floor(s.elapsed%3600/60),sec=Math.floor(s.elapsed%60);
+   $('rideTime').textContent=[h,m,sec].map(x=>String(x).padStart(2,'0')).join(':');updateMap();
+ }
+ for(const id of ['speed','cadence','hr'])$(id).addEventListener('input',e=>{s[id]=+e.target.value;render();});
+ for(const id of ['night','cadenceConnected','hrConnected'])$(id).addEventListener('click',()=>{s[id]=!s[id];render();});
+ $('play').addEventListener('click',()=>{s.running=!s.running;render();});
+ $('reset').addEventListener('click',()=>{Object.assign(s,{running:true,progress:.05,elapsed:821,speed:27.8,cadence:86,hr:143,zoom:1});for(const id of ['speed','cadence','hr'])$(id).value=s[id];render();});
+ $('zoomIn').addEventListener('click',()=>{s.zoom=Math.min(2,s.zoom+.2);render();});
+ $('zoomOut').addEventListener('click',()=>{s.zoom=Math.max(1,s.zoom-.2);render();});
+ function animate(ts){if(!last)last=ts;const dt=Math.min((ts-last)/1000,.1);last=ts;if(s.running){s.elapsed+=dt*16; s.progress=(s.progress + dt*(s.speed/3.6/5000)*16) % .94;render();}requestAnimationFrame(animate);}render();requestAnimationFrame(animate);
+})()
+</script>
+</body>
+</html>
