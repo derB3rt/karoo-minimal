@@ -1,4 +1,4 @@
-name: Android APK (debug)
+name: Android APK v0.4 (debug)
 on:
   push:
     branches: [main]
@@ -38,7 +38,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: karoo-minimal-debug-apk
+          name: karoo-minimal-v0.4.0-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -48,14 +48,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          TAG="v0.1.0-debug"
-          APK="app/build/outputs/apk/debug/app-debug.apk"
+          TAG="v0.4.0-beta.1"
+          cp app/build/outputs/apk/debug/app-debug.apk Karoo-Minimal-v0.4.0-debug.apk
+          APK="Karoo-Minimal-v0.4.0-debug.apk"
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$APK#Karoo-Minimal-v0.1.0-debug.apk" --clobber
+            gh release upload "$TAG" "$APK" --clobber
           else
-            gh release create "$TAG" "$APK#Karoo-Minimal-v0.1.0-debug.apk" \
+            gh release create "$TAG" "$APK" \
               --target "$GITHUB_SHA" \
-              --title "Karoo Minimal v0.1.0 (Testversion)" \
-              --notes "Vorabversion. APK kompiliert, aber noch nicht auf einem Karoo 3 getestet. Installation über Hammerhead Companion oder ADB." \
+              --title "Karoo Minimal v0.4.0 (Testversion)" \
+              --notes "v0.4.0: kompakte Dreifach-Datenleiste (Geschwindigkeit, Kadenz, Puls). Originale Karoo-Navigation bleibt unverändert. Android-APK gebaut, aber Hardware-Test steht noch aus. Die 180-m-Abbiegebox existiert nur im Simulator und wird auf dem Karoo durch die native Navigation gesteuert." \
               --prerelease
           fi

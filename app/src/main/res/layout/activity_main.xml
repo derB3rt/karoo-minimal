@@ -10,7 +10,7 @@
         android:textColor="#E4ECF0" android:textSize="15sp"
         android:layout_marginTop="16dp" android:layout_marginBottom="22dp" />
     <include layout="@layout/field_dashboard"
-        android:layout_width="match_parent" android:layout_height="70dp" />
+        android:layout_width="match_parent" android:layout_height="54dp" />
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="VORSCHAU · DEMOWERTE" android:textColor="#778B98"
         android:textSize="10sp" android:layout_marginTop="6dp" />

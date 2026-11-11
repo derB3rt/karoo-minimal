@@ -2,9 +2,15 @@
 
 Ein minimalistisches **3-in-1-Datenfeld** für die originale Navigationskarte des **Hammerhead Karoo (3. Generation)**.
 
-![KAROO MINIMAL Designvorschau](docs/preview.svg)
+## Aktuelle Vorschau v0.4.0
 
-> **Status: v0.1.0 – Android-Quellcode und Design-Prototyp.** Noch nicht auf einem Karoo kompiliert oder praktisch getestet. Die Karte im Bild ist nur eine Illustration; die Erweiterung erstellt **keine eigene Karte**.
+| Normale Fahrt – freie Karte | Kurz vor der Abbiegung |
+| :---: | :---: |
+| ![Karte ohne Abbiegehinweis und mit schmaler Datenleiste](docs/preview.svg) | ![Karte mit kontextabhängigem Abbiegehinweis](docs/preview-turn.svg) |
+
+[**Interaktiven Simulator testen**](docs/simulator.html) · [Vorschauen groß ansehen](docs/preview.html)
+
+> **Status: v0.4.0 – Debug-APK erfolgreich in GitHub Actions kompiliert, Hardwaretest ausstehend.** Die Bilder sind **Illustrationen** der Simulation, keine Screenshots der Original-Firmware. Die Extension zeichnet nur ihre eigene Datenleiste; die native Karoo-Navigation übernimmt die Karte und die Abbiegehinweise.
 
 ## Interaktive Browser-Simulation
 
@@ -18,9 +24,9 @@ Optional als Webseite veröffentlichen: In GitHub unter **Settings → Pages** a
 
 ## APK automatisch mit GitHub Actions bauen
 
-[Build-Workflow ansehen](.github/workflows/build-apk.yml) · [Actions-Bereich öffnen](https://github.com/derB3rt/karoo-minimal/actions)
+[**Aktuelle APK v0.4.0 als GitHub-Release herunterladen**](https://github.com/derB3rt/karoo-minimal/releases/tag/v0.4.0-beta.1) · [Build-Workflow ansehen](.github/workflows/build-apk.yml) · [Actions-Bereich öffnen](https://github.com/derB3rt/karoo-minimal/actions)
 
-Der Workflow installiert Android SDK 35 und Gradle 8.9, baut `:app:assembleDebug` und lädt bei Erfolg `karoo-minimal-debug-apk` als GitHub-Actions-Artefakt hoch. **Nur ein erfolgreicher Workflow bedeutet, dass eine installierbare Debug-APK erzeugt wurde.** Die App bleibt bis zum Gerätetest ein Prototyp. Bei Problemen mit der Hammerhead-Abhängigkeit können zusätzliche GitHub-Packages-Leserechte nötig sein.
+Der Workflow installiert Android SDK 35 und Gradle 8.9, baut `:app:assembleDebug`, lädt `karoo-minimal-v0.4.0-debug-apk` als GitHub-Actions-Artefakt hoch und veröffentlicht die Datei `Karoo-Minimal-v0.4.0-debug.apk` im GitHub-Release. **Nur ein erfolgreicher Workflow bedeutet, dass eine installierbare Debug-APK erzeugt wurde.** Die App bleibt bis zum Gerätetest ein Prototyp. Bei Problemen mit der Hammerhead-Abhängigkeit können zusätzliche GitHub-Packages-Leserechte nötig sein.
 
 ## Konzept
 
@@ -41,7 +47,7 @@ Es gibt keine eigene Karten-App, keinen direkten Bluetooth-Zugriff und keinen Ne
 - Native `RemoteViews`-Anzeige mit drei Kennzahlen
 - Live-Werte über Karoo-`OnStreamState.StartStreaming`
 - Reine Layoutvorschau in der App (`MainActivity`)
-- Statischer [Designentwurf](docs/preview.html) als SVG
+- Zwei aktuelle [Designentwürfe](docs/preview.html) als SVG (mit/ohne Abbiegehinweis)
 
 Die Beschriftungen und Abstände in `field_dashboard.xml` sind gegenüber v0.1.0 jetzt kompakter (Mindesthöhe 48 dp). **Die native Karoo-Oberfläche bestimmt, wie groß der Datenfeldplatz tatsächlich ist.** Abbiegehinweise im echten Gerät werden ausschließlich von Hammerhead gesteuert; die 180-Meter-Schwelle gilt nur im Simulator. Die Breite und Höhe eines grafischen Datenfelds legt die Karoo-Oberfläche fest. Ob die Leiste in der tatsächlichen Kartenansicht gut lesbar ist, müssen wir auf dem Gerät prüfen.
 
