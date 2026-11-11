@@ -29,7 +29,7 @@ import java.util.Locale
  * graphical field to a map page, containing speed, cadence and heart rate.
  * No location permission, no network access, no direct sensor connections.
  */
-class MinimalExtension : KarooExtension("karoo-minimal", "0.1.0") {
+class MinimalExtension : KarooExtension("karoo-minimal", "0.4.0") {
     private val system by lazy { KarooSystemService(applicationContext) }
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
