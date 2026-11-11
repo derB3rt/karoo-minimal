@@ -153,10 +153,10 @@
 (()=>{
  'use strict';
  const $=id=>document.getElementById(id), formatSpeed=x=>Number(x).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1});
- const s={running:true,progress:0.05,elapsed:13*60+41,zoom:1,speed:27.8,cadence:86,hr:143,night:false,cadenceConnected:true,hrConnected:true};
+ const s={running:true,progress:0.22,elapsed:13*60+41,zoom:1,speed:27.8,cadence:86,hr:143,night:false,cadenceConnected:true,hrConnected:true};
  let last=0; const route=$('routeLine'), marker=$('marker'); const length=route.getTotalLength();
  function updateMap(){
-   const p=route.getPointAtLength(length*(1-s.progress)),q=route.getPointAtLength(length*Math.max(0,1-s.progress-0.014));
+   const p=route.getPointAtLength(length*s.progress),q=route.getPointAtLength(length*Math.min(1,s.progress+0.014));
    const angle=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI +90;
    marker.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${angle})`);
    const w=480/s.zoom,h=800/s.zoom,x=240-w/2,y=400-h/2; $('map').setAttribute('viewBox',`${x} ${y} ${w} ${h}`);
@@ -177,7 +177,7 @@
  for(const id of ['speed','cadence','hr'])$(id).addEventListener('input',e=>{s[id]=+e.target.value;render();});
  for(const id of ['night','cadenceConnected','hrConnected'])$(id).addEventListener('click',()=>{s[id]=!s[id];render();});
  $('play').addEventListener('click',()=>{s.running=!s.running;render();});
- $('reset').addEventListener('click',()=>{Object.assign(s,{running:true,progress:.05,elapsed:821,speed:27.8,cadence:86,hr:143,zoom:1});for(const id of ['speed','cadence','hr'])$(id).value=s[id];render();});
+ $('reset').addEventListener('click',()=>{Object.assign(s,{running:true,progress:.22,elapsed:821,speed:27.8,cadence:86,hr:143,zoom:1});for(const id of ['speed','cadence','hr'])$(id).value=s[id];render();});
  $('zoomIn').addEventListener('click',()=>{s.zoom=Math.min(2,s.zoom+.2);render();});
  $('zoomOut').addEventListener('click',()=>{s.zoom=Math.max(1,s.zoom-.2);render();});
  function animate(ts){if(!last)last=ts;const dt=Math.min((ts-last)/1000,.1);last=ts;if(s.running){s.elapsed+=dt*16; s.progress=(s.progress + dt*(s.speed/3.6/5000)*16) % .94;render();}requestAnimationFrame(animate);}render();requestAnimationFrame(animate);
