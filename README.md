@@ -10,7 +10,7 @@ Ein minimalistisches **3-in-1-Datenfeld** für die originale Navigationskarte de
 
 [Simulator öffnen (Datei auf GitHub)](docs/simulator.html) · [HTML direkt herunterladen](https://raw.githubusercontent.com/derB3rt/karoo-minimal/main/docs/simulator.html)
 
-Der eigenständige Simulator enthält eine schematische, animierte Karte im **480 × 800 px Karoo-Displayformat** und einen Navigationshinweis. Geschwindigkeit, Kadenz und Herzfrequenz lassen sich verändern, Sensoren trennen, Nachtmodus umschalten sowie Navigation und Zoom steuern. Er lässt sich nach dem Herunterladen **offline im Browser** öffnen.
+Der eigenständige Simulator enthält eine schematische, animierte Karte im **480 × 800 px Karoo-Displayformat** und einen Navigationshinweis. Geschwindigkeit, Kadenz und Herzfrequenz lassen sich verändern, Sensoren trennen, Nachtmodus umschalten sowie Navigation und Zoom steuern. **Seit Simulator v0.4**: Der Abbiegehinweis ist normalerweise ausgeblendet und erscheint erst auf den letzten **180 m vor der Demo-Abbiegung**; der neue Streckenpositions-Regler erlaubt, genau diesen Moment zu testen. Die Demo-Datenleiste ist nur noch **72 statt 102 Pixel** hoch. Er lässt sich nach dem Herunterladen **offline im Browser** öffnen.
 
 Es handelt sich **nicht** um emulierte Hammerhead-Firmware und **nicht** um einen Test der Android-Extension. Karten, Sensoren und Route sind Demo-Daten.
 
@@ -43,7 +43,7 @@ Es gibt keine eigene Karten-App, keinen direkten Bluetooth-Zugriff und keinen Ne
 - Reine Layoutvorschau in der App (`MainActivity`)
 - Statischer [Designentwurf](docs/preview.html) als SVG
 
-Die Breite und Höhe eines grafischen Datenfelds legt die Karoo-Oberfläche fest. Ob die Leiste in der tatsächlichen Kartenansicht gut lesbar ist, müssen wir auf dem Gerät prüfen.
+Die Beschriftungen und Abstände in `field_dashboard.xml` sind gegenüber v0.1.0 jetzt kompakter (Mindesthöhe 48 dp). **Die native Karoo-Oberfläche bestimmt, wie groß der Datenfeldplatz tatsächlich ist.** Abbiegehinweise im echten Gerät werden ausschließlich von Hammerhead gesteuert; die 180-Meter-Schwelle gilt nur im Simulator. Die Breite und Höhe eines grafischen Datenfelds legt die Karoo-Oberfläche fest. Ob die Leiste in der tatsächlichen Kartenansicht gut lesbar ist, müssen wir auf dem Gerät prüfen.
 
 ## Build und Installation
 
@@ -56,7 +56,7 @@ Voraussetzungen: Android Studio, JDK 17, Android SDK 35, Gradle 8.9.
 5. Debug-APK über einen für die aktuelle Karoo-OS-Version unterstützten Sideloading-Weg installieren.
 6. Im Karoo-Ride-Profil die **Kartenseite** bearbeiten und das grafische Datenfeld **MINIMAL · Speed / Cadence / HR** in einen Datenfeldplatz unten auf der Karte aufnehmen.
 
-**Die APK ist noch nicht gebaut oder auf dem Gerät getestet.** Insbesondere die tatsächliche Feldhöhe, der Kontrast sowie die Sensoranzeige müssen in einem Hardwaretest geprüft werden.
+**Die Debug-APK wird erfolgreich über GitHub Actions gebaut, ist aber noch nicht auf dem Gerät getestet.** Insbesondere die tatsächliche Feldhöhe, der Kontrast sowie die Sensoranzeige müssen in einem Hardwaretest geprüft werden.
 
 ## Struktur
 
