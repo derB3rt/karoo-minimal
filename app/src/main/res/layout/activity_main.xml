@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="18dp" android:gravity="center_vertical">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="KAROO / MINIMAL" android:textColor="#8BE6D9"
+        android:textSize="14sp" android:letterSpacing="0.15" android:textStyle="bold" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Die Karte bleibt die originale Karoo-Navigation. Diese Erweiterung ergänzt eine kompakte Live-Leiste."
+        android:textColor="#E4ECF0" android:textSize="15sp"
+        android:layout_marginTop="16dp" android:layout_marginBottom="22dp" />
+    <include layout="@layout/field_dashboard"
+        android:layout_width="match_parent" android:layout_height="70dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="VORSCHAU · DEMOWERTE" android:textColor="#778B98"
+        android:textSize="10sp" android:layout_marginTop="6dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Einrichten: Karoo → Profile → Kartenseite → Datenfeld hinzufügen → MINIMAL · Speed / Cadence / HR. Nur dieses eine Datenfeld auf der Karte verwenden und nach unten verschieben."
+        android:textColor="#C5D4DD" android:textSize="13sp" android:lineSpacingExtra="3dp"
+        android:layout_marginTop="26dp" />
+</LinearLayout>

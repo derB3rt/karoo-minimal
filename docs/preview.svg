@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="720" viewBox="0 0 1080 720">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#122836"/><stop offset="1" stop-color="#060b12"/></linearGradient>
+ <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#14232e"/><stop offset="1" stop-color="#0c1621"/></linearGradient>
+ <clipPath id="clip"><rect x="116" y="65" width="281" height="578" rx="19"/></clipPath>
+</defs>
+<rect width="1080" height="720" fill="url(#bg)"/>
+<circle cx="237" cy="365" r="330" fill="#274050" opacity="0.27"/>
+<!-- device -->
+<rect x="93" y="35" width="327" height="637" rx="37" fill="#05090e" stroke="#455461" stroke-width="8"/>
+<rect x="82" y="154" width="10" height="50" rx="4" fill="#34434e"/>
+<rect x="82" y="250" width="10" height="50" rx="4" fill="#34434e"/>
+<rect x="420" y="154" width="9" height="50" rx="4" fill="#34434e"/>
+<rect x="420" y="250" width="9" height="50" rx="4" fill="#34434e"/>
+<rect x="116" y="65" width="281" height="578" rx="19" fill="#22343c"/>
+<g clip-path="url(#clip)">
+  <path d="M80 170 Q180 106 305 162 L450 190 L450 320 L120 355Z" fill="#2d413d" opacity=".8"/>
+  <path d="M60 430 Q180 342 255 389 T440 340 L450 670 L55 670Z" fill="#273d35"/>
+  <g stroke="#586771" stroke-width="18" fill="none" opacity=".75">
+   <path d="M97 205 Q235 218 450 164"/><path d="M95 448 L282 412 L422 466"/><path d="M159 52 L153 194 L208 327 L170 645"/><path d="M300 60 L272 208 L279 328 L334 665"/>
+  </g>
+  <g stroke="#9eada8" stroke-width="4" fill="none" opacity=".7">
+   <path d="M97 205 Q235 218 450 164"/><path d="M95 448 L282 412 L422 466"/><path d="M159 52 L153 194 L208 327 L170 645"/><path d="M300 60 L272 208 L279 328 L334 665"/>
+  </g>
+  <g stroke="#5a707c" stroke-width="5" fill="none" opacity=".85">
+   <path d="M115 286 L213 258 L384 294"/><path d="M119 353 L237 347 L399 353"/>
+   <path d="M214 76 L229 190 L221 270 L250 643"/>
+   <path d="M342 75 L320 180 L362 299 L333 639"/>
+  </g>
+  <g fill="#839ba3" font-size="10" font-family="sans-serif" letter-spacing="1">
+   <text x="134" y="305">WARSCHAUER STR.</text><text x="141" y="478">MÜHLENSTR.</text><text x="263" y="250">FRIEDRICHSHAIN</text>
+  </g>
+  <path d="M337 665 L333 543 L309 453 L282 381 L247 339 L227 263 L229 190 L222 159" stroke="#10363a" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M337 665 L333 543 L309 453 L282 381 L247 339 L227 263 L229 190 L222 159" stroke="#98f1e1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="253" cy="358" r="19" fill="#8be7dc" opacity=".24"/>
+  <circle cx="253" cy="358" r="10" fill="#8be7dc" stroke="#153840" stroke-width="4"/>
+  <rect x="117" y="65" width="279" height="578" fill="#06131b" opacity=".14"/>
+</g>
+<!-- nav -->
+<text x="134" y="87" font-family="sans-serif" font-size="10" fill="#e7f7f4" font-weight="bold" letter-spacing="1.5">KAROO / 09:41</text>
+<text x="333" y="87" font-family="sans-serif" font-size="10" fill="#d3e5e2" font-weight="bold">87%</text>
+<rect x="130" y="104" width="254" height="74" rx="12" fill="#122b31" stroke="#40696b" stroke-width="1"/>
+<path d="M156 157 L156 127 L143 141 M156 127 L170 141" fill="none" stroke="#96ede0" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="190" y="137" font-family="sans-serif" font-weight="bold" font-size="23" fill="#fff">350 m</text>
+<text x="190" y="159" font-family="sans-serif" font-size="11" fill="#b7d4d2">Links auf Warschauer Str.</text>
+<!-- real feature: data field -->
+<rect x="124" y="546" width="265" height="77" rx="12" fill="url(#panel)" stroke="#50606c" stroke-width="1.2"/>
+<line x1="225" y1="560" x2="225" y2="608" stroke="#40525e"/>
+<line x1="306" y1="560" x2="306" y2="608" stroke="#40525e"/>
+<g text-anchor="middle" font-family="DejaVu Sans,sans-serif" font-weight="bold">
+  <text x="177" y="593" font-size="30" fill="#9cf1e4">27,8</text>
+  <text x="266" y="593" font-size="28" fill="#f6f9fa">86</text>
+  <text x="349" y="593" font-size="28" fill="#ffaeb5">143</text>
+</g>
+<g text-anchor="middle" font-family="DejaVu Sans,sans-serif" font-size="8" letter-spacing=".6" fill="#b2c8d3">
+  <text x="177" y="609">KM/H · SPEED</text><text x="266" y="609">RPM · CAD</text><text x="349" y="609">BPM · HR</text>
+</g>
+<!-- descriptor -->
+<text x="495" y="158" fill="#98f1e1" font-family="sans-serif" font-size="16" font-weight="bold" letter-spacing="3">KAROO 3 · CUSTOM FIELD</text>
+<text x="492" y="235" fill="#f3f9fa" font-family="sans-serif" font-size="56" font-weight="bold">Mehr Karte.</text>
+<text x="492" y="302" fill="#98f1e1" font-family="sans-serif" font-size="56" font-weight="bold">Weniger Ballast.</text>
+<text x="495" y="353" fill="#b4c8d1" font-family="sans-serif" font-size="20">Ein kompaktes Datenfeld.</text>
+<text x="495" y="382" fill="#b4c8d1" font-family="sans-serif" font-size="20">Die originale Karoo-Navigation bleibt.</text>
+<line x1="495" y1="422" x2="987" y2="422" stroke="#3c5260"/>
+<text x="495" y="463" fill="#98f1e1" font-family="sans-serif" font-size="19" font-weight="bold">01 / SPEED</text>
+<text x="762" y="463" fill="#f2f7f9" font-family="sans-serif" font-size="19" font-weight="bold">02 / CADENCE</text>
+<text x="495" y="504" fill="#ffabb4" font-family="sans-serif" font-size="19" font-weight="bold">03 / HEART RATE</text>
+<text x="762" y="504" fill="#f2f7f9" font-family="sans-serif" font-size="19" font-weight="bold">04 / MAP</text>
+<text x="495" y="585" fill="#91aab6" font-family="sans-serif" font-size="14">Illustrative Designvorschau – Karte und Route sind simuliert.</text>
+<text x="495" y="610" fill="#91aab6" font-family="sans-serif" font-size="14">Auf dem Gerät wird ausschließlich die Datenleiste gezeichnet.</text>
+</svg>

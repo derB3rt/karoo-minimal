@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Karoo Minimal</string>
+    <string name="extension_name">Karoo Minimal</string>
+    <string name="data_type_name">MINIMAL · Speed / Cadence / HR</string>
+    <string name="data_type_description">Drei kompakte Live-Metriken in einem Datenfeld für die Karoo-Karte</string>
+</resources>

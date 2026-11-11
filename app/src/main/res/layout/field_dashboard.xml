@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One compact horizontal band. Place in a single full-width Karoo map field slot. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="69dp"
+    android:background="@drawable/field_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:paddingStart="7dp"
+    android:paddingEnd="7dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <LinearLayout
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1.25" android:gravity="center" android:orientation="vertical">
+        <TextView
+            android:id="@+id/speed_value"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="27,8" android:textColor="#8BE6D9" android:textSize="24sp"
+            android:fontFamily="sans-serif-condensed" android:textStyle="bold"
+            android:gravity="center" android:includeFontPadding="false" android:maxLines="1" />
+        <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="KM/H · SPEED" android:textColor="#B4C5CE" android:textSize="8sp"
+            android:letterSpacing="0.05" android:gravity="center" android:maxLines="1" />
+    </LinearLayout>
+
+    <TextView android:layout_width="1dp" android:layout_height="43dp"
+        android:background="#34404B" android:text="" />
+
+    <LinearLayout
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <TextView
+            android:id="@+id/cadence_value"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="86" android:textColor="#F4F8FA" android:textSize="23sp"
+            android:fontFamily="sans-serif-condensed" android:textStyle="bold"
+            android:gravity="center" android:includeFontPadding="false" android:maxLines="1" />
+        <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="RPM · KADENZ" android:textColor="#B4C5CE" android:textSize="8sp"
+            android:letterSpacing="0.05" android:gravity="center" android:maxLines="1" />
+    </LinearLayout>
+
+    <TextView android:layout_width="1dp" android:layout_height="43dp"
+        android:background="#34404B" android:text="" />
+
+    <LinearLayout
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <TextView
+            android:id="@+id/hr_value"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="143" android:textColor="#F8A6AE" android:textSize="23sp"
+            android:fontFamily="sans-serif-condensed" android:textStyle="bold"
+            android:gravity="center" android:includeFontPadding="false" android:maxLines="1" />
+        <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="BPM · PULS" android:textColor="#B4C5CE" android:textSize="8sp"
+            android:letterSpacing="0.05" android:gravity="center" android:maxLines="1" />
+    </LinearLayout>
+</LinearLayout>
