@@ -39,7 +39,7 @@
     .road-distance{position:absolute;left:12px;bottom:99px;display:flex;align-items:center;gap:6px;color:#17373a;font-weight:800;font-size:10px;background:#ffffffdf;border-radius:8px;padding:7px 9px}.screen.night .road-distance{background:#223840;color:#d5eeed}
     .metrics{position:absolute;bottom:0;left:0;right:0;height:72px;padding:4px;display:grid;grid-template-columns:1.17fr 1fr 1fr;gap:2px;background:#0c1924;box-shadow:0 -8px 20px #0c19242b}
     .metric{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;position:relative;background:#13222e}.metric:first-child{border-radius:10px 2px 2px 10px}.metric:last-child{border-radius:2px 10px 10px 2px}.metric + .metric:before{content:"";position:absolute;left:-2px;top:12px;bottom:12px;width:1px;background:#3b4d59}
-    .val{font-family:Inter,ui-sans-serif,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;font-size:26px;font-weight:820;letter-spacing:-.07em;white-space:nowrap;line-height:1.13;color:#f9fbff}.metric.main .val{color:#93f0dd;font-size:30px}.metric.hr .val{color:#ffb0b9}
+    .val{font-family:Inter,ui-sans-serif,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;font-size:26px;font-weight:820;letter-spacing:-.07em;white-space:nowrap;line-height:1.13;color:#f9fbff}.metric.speed .val{color:#93f0dd;font-size:30px}.metric.hr .val{color:#ffb0b9}
     .mlabel{font-size:8px;font-weight:770;letter-spacing:.04em;color:#9fb5c1;white-space:nowrap;margin-top:2px}.metric.no-signal .val{opacity:.6}.metric.no-signal .mlabel{color:#718593}
     .screen-footnote{display:flex;align-items:center;justify-content:center;margin-top:15px;gap:8px;font-size:10px;font-weight:750;letter-spacing:.1em;color:#8daab7;z-index:1}
     .screen-footnote:before{content:"";height:5px;width:5px;border-radius:50%;background:#65dacb}
@@ -121,7 +121,7 @@
           <div class="road-distance"><span>↗</span><span id="remain">4,8 km übrig</span></div>
           <div class="map-controls"><button id="zoomIn" title="Karte vergrößern" aria-label="Karte vergrößern">+</button><button id="zoomOut" title="Karte verkleinern" aria-label="Karte verkleinern">−</button></div>
           <div class="metrics">
-            <div class="metric main" id="speedMetric"><div class="val" id="speedDisplay">27,8</div><div class="mlabel">KM/H · SPEED</div></div>
+            <div class="metric speed" id="speedMetric"><div class="val" id="speedDisplay">27,8</div><div class="mlabel">KM/H · SPEED</div></div>
             <div class="metric" id="cadenceMetric"><div class="val" id="cadenceDisplay">86</div><div class="mlabel">RPM · KADENZ</div></div>
             <div class="metric hr" id="hrMetric"><div class="val" id="hrDisplay">143</div><div class="mlabel">BPM · PULS</div></div>
           </div>
