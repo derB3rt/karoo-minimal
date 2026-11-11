@@ -6,6 +6,22 @@ Ein minimalistisches **3-in-1-Datenfeld** für die originale Navigationskarte de
 
 > **Status: v0.1.0 – Android-Quellcode und Design-Prototyp.** Noch nicht auf einem Karoo kompiliert oder praktisch getestet. Die Karte im Bild ist nur eine Illustration; die Erweiterung erstellt **keine eigene Karte**.
 
+## Interaktive Browser-Simulation
+
+[Simulator öffnen (Datei auf GitHub)](docs/simulator.html) · [HTML direkt herunterladen](https://raw.githubusercontent.com/derB3rt/karoo-minimal/main/docs/simulator.html)
+
+Der eigenständige Simulator enthält eine schematische, animierte Karte im **480 × 800 px Karoo-Displayformat** und einen Navigationshinweis. Geschwindigkeit, Kadenz und Herzfrequenz lassen sich verändern, Sensoren trennen, Nachtmodus umschalten sowie Navigation und Zoom steuern. Er lässt sich nach dem Herunterladen **offline im Browser** öffnen.
+
+Es handelt sich **nicht** um emulierte Hammerhead-Firmware und **nicht** um einen Test der Android-Extension. Karten, Sensoren und Route sind Demo-Daten.
+
+Optional als Webseite veröffentlichen: In GitHub unter **Settings → Pages** als Quelle **Deploy from a branch**, Branch **main**, Ordner **/docs** wählen. Danach ist der Simulator unter `https://derb3rt.github.io/karoo-minimal/simulator.html` erreichbar (erst nach erfolgreicher Pages-Bereitstellung).
+
+## APK automatisch mit GitHub Actions bauen
+
+[Build-Workflow ansehen](.github/workflows/build-apk.yml) · [Actions-Bereich öffnen](https://github.com/derB3rt/karoo-minimal/actions)
+
+Der Workflow installiert Android SDK 35 und Gradle 8.9, baut `:app:assembleDebug` und lädt bei Erfolg `karoo-minimal-debug-apk` als GitHub-Actions-Artefakt hoch. **Nur ein erfolgreicher Workflow bedeutet, dass eine installierbare Debug-APK erzeugt wurde.** Die App bleibt bis zum Gerätetest ein Prototyp. Bei Problemen mit der Hammerhead-Abhängigkeit können zusätzliche GitHub-Packages-Leserechte nötig sein.
+
 ## Konzept
 
 Die native Karoo-Kartenseite übernimmt Navigation, Karten, Routen und Abbiegehinweise. Diese Extension liefert **ein** grafisches Datenfeld am unteren Kartenrand:
